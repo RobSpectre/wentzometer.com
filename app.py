@@ -18,8 +18,6 @@ def snap_count():
     if result.status_code == 200:
         data = result.json()
 
-        print(data)
-
         for player in data['data']:
             if player['full_name'] == "Carson Wentz":
                 return jsonify({'snap_percentage':
