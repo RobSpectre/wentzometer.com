@@ -13,10 +13,10 @@ from local_settings import TWITTER_ACCESS_SECRET
 sched = BlockingScheduler()
 
 
-sched.week = 0
+sched.week = 1 
 
 
-@sched.scheduled_job('interval', minutes=1)
+@sched.scheduled_job('interval', hours=2)
 def check_snap_count():
     print("Checking snap count...")
     result = requests.get('https://api.lineups.com/nfl/'
