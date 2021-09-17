@@ -14,12 +14,12 @@
 
 .eagles {
   background: url('/static/images/eagles-logo.png');
-  width: 500px;
-  height: 316px;
+  width: 400px;
+  height: 253px;
 }
 
 .colts{
   background: url('/static/images/colts-logo.png');
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
 }
