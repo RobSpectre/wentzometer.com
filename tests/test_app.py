@@ -49,3 +49,8 @@ class WentzoMeterTest(TestCase):
         response = self.app.get('/snap_count')
 
         self.assertEqual(response.status_code, 500)
+
+    def test_index(self):
+        response = self.app.get('/')
+
+        self.assertEqual(response.status_code, 200)
