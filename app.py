@@ -3,11 +3,17 @@ import os
 from flask import Flask
 from flask import jsonify
 from flask import abort
+from flask import render_template
 
 import requests
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('local_settings.py')
+
+
+@app.route('/')
+def index():
+    return render_template('chart.html')
 
 
 @app.route('/snap_count', methods=['GET', 'POST'])

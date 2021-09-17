@@ -1,0 +1,28 @@
+{
+  "name": "wentzometer",
+  "version": "1.0.0",
+  "description": "Will Philly get their first round draft pick in 2022? That's up to Carson Wentz.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "tox"
+  },
+  "scripts": {
+    "postinstall": "npx tailwindcss-cli@latest build ./static/styles/src/style.css -o static/styles/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobSpectre/wentzometer.com.git"
+  },
+  "author": "Rob Spectre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobSpectre/wentzometer.com/issues"
+  },
+  "homepage": "https://github.com/RobSpectre/wentzometer.com#readme",
+  "dependencies": {
+    "tailwindcss": "^2.2.7"
+  }
+}

@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
+.eagles {
+  background: url('/static/images/eagles-logo.png');
+  width: 500px;
+  height: 316px;
+}
+
+.colts{
+  background: url('/static/images/colts-logo.png');
+  width: 500px;
+  height: 500px;
+}
