@@ -13,7 +13,7 @@ from local_settings import TWITTER_ACCESS_SECRET
 sched = BlockingScheduler()
 
 
-sched.week = 1 
+sched.week = 1
 
 
 @sched.scheduled_job('interval', hours=2)
@@ -86,7 +86,7 @@ def construct_tweet(snap_percentage):
 
     chart = generate_chart(snap_percentage)
 
-    return "{0}\n{1}".format(tweet, chart)
+    return "{0}\n\n{1}".format(tweet, chart)
 
 
 if __name__ == "__main__":
