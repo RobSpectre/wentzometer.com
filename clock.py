@@ -13,7 +13,8 @@ from local_settings import TWITTER_ACCESS_SECRET
 sched = BlockingScheduler()
 
 
-sched.week = 1
+sched.week = 2
+sched.snap_percentage = 100.0
 
 
 @sched.scheduled_job('interval', hours=2)
@@ -27,7 +28,7 @@ def check_snap_count():
 
         for player in data['data']:
             if player['full_name'] == "Carson Wentz":
-                if len(player['weeks']) > sched.week:
+                if len(player['weeks']) > sched.week and sched.snap_percentage != player['season_snap_percent']:
                     sched.week = len(player['weeks'])
 
                     auth = tweepy.OAuthHandler(TWITTER_API_KEY,
