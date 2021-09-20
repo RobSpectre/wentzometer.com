@@ -34,8 +34,6 @@ def check_snap_count():
         for player in data['data']:
             if player['full_name'] == "Carson Wentz":
                 if len(player['weeks']) > sched.week and sched.snap_percentage != player['season_snap_percent']:
-                    sched.week = len(player['weeks'])
-
                     auth = tweepy.OAuthHandler(TWITTER_API_KEY,
                                                TWITTER_SECRET)
                     auth.set_access_token(TWITTER_ACCESS_TOKEN,
@@ -46,6 +44,9 @@ def check_snap_count():
                     tweet = construct_tweet(player['season_snap_percent'])
 
                     print("Tweeting this: {0}".format(tweet))
+
+                    sched.week = len(player['weeks'])
+                    sched.snap_percentage = player['season_snap_percent']
 
                     return twitter.update_status(tweet)
 
