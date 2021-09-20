@@ -17,7 +17,12 @@ sched.week = 2
 sched.snap_percentage = 100.0
 
 
-@sched.scheduled_job('interval', hours=2)
+@sched.scheduled_job('cron', 
+                     minute="*/15",
+                     hour="*/15",
+                     day="*",
+                     month="9-12",
+                     day_of_week="0,1,4")
 def check_snap_count():
     print("Checking snap count...")
     result = requests.get('https://api.lineups.com/nfl/'
