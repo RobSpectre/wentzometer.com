@@ -13,11 +13,11 @@ from local_settings import TWITTER_ACCESS_SECRET
 sched = BlockingScheduler()
 
 
-sched.week = 2
-sched.snap_percentage = 100.0
+sched.week = 4 
+sched.snap_percentage = 98.1
 
 
-@sched.scheduled_job('cron', 
+@sched.scheduled_job('cron',
                      minute="*/15",
                      hour="*/15",
                      day="*",
@@ -34,21 +34,25 @@ def check_snap_count():
         for player in data['data']:
             if player['full_name'] == "Carson Wentz":
                 if len(player['weeks']) > sched.week and sched.snap_percentage != player['season_snap_percent']:
-                    auth = tweepy.OAuthHandler(TWITTER_API_KEY,
-                                               TWITTER_SECRET)
-                    auth.set_access_token(TWITTER_ACCESS_TOKEN,
-                                          TWITTER_ACCESS_SECRET)
-
-                    twitter = tweepy.API(auth)
-
-                    tweet = construct_tweet(player['season_snap_percent'])
-
-                    print("Tweeting this: {0}".format(tweet))
-
                     sched.week = len(player['weeks'])
                     sched.snap_percentage = player['season_snap_percent']
 
-                    return twitter.update_status(tweet)
+                    return tweet_snap_count(player['season_snap_percent'])
+
+
+def tweet_snap_count(snap_percentage):
+    auth = tweepy.OAuthHandler(TWITTER_API_KEY,
+                               TWITTER_SECRET)
+    auth.set_access_token(TWITTER_ACCESS_TOKEN,
+                          TWITTER_ACCESS_SECRET)
+
+    twitter = tweepy.API(auth)
+
+    tweet = construct_tweet(snap_percentage)
+
+    print("Tweeting this: {0}".format(tweet))
+
+    return twitter.update_status(tweet)
 
 
 def generate_chart(snap_percentage):

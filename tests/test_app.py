@@ -1,8 +1,19 @@
+import base64
+
+from werkzeug.security import generate_password_hash
+
 from unittest import TestCase
 
 import responses
 
 from .context import app
+
+app.config['TWITTER_API_KEY'] = 'xxxxxx'
+app.config['TWITTER_SECRET'] = 'yyyyyyy'
+app.config['TWITTER_ACCESS_TOKEN'] = 'aaaa'
+app.config['TWITTER_ACCESS_SECRET'] = 'bbb'
+app.config['WENTZOMETER_ADMIN_USER'] = 'foo'
+app.config['WENTZOMETER_ADMIN_PASSWORD'] = 'bar'
 
 
 class WentzoMeterTest(TestCase):
@@ -49,6 +60,13 @@ class WentzoMeterTest(TestCase):
         response = self.app.get('/snap_count')
 
         self.assertEqual(response.status_code, 500)
+
+    def test_snap_count_manual(self):
+        response = self.app.get('/snap_count_manual')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(),
+                         {'snap_percentage': app.snap_percentage_manual})
 
     def test_index(self):
         response = self.app.get('/')

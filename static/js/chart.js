@@ -13,7 +13,7 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
-getJSON('/snap_count', function(err, data) {
+getJSON('/snap_count_manual', function(err, data) {
   if (err !== null) {
     console.log("Epic fail.");
   } else {
