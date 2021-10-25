@@ -13,7 +13,7 @@ from local_settings import TWITTER_ACCESS_SECRET
 sched = BlockingScheduler()
 
 
-sched.week = 4 
+sched.week = 4
 sched.snap_percentage = 98.1
 
 
@@ -74,7 +74,7 @@ def generate_chart(snap_percentage):
 
 def construct_tweet(snap_percentage):
     if snap_percentage >= 90:
-        tweet = "Wentz is solidy above the snaps needed for Philly to get " \
+        tweet = "Wentz is solidly above the snaps needed for Philly to get " \
                 "a first round pick."
     elif snap_percentage >= 80:
         tweet = "Wentz remains above the snaps needed for Philly to get " \

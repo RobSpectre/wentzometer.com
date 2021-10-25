@@ -20,7 +20,7 @@ from clock import tweet_snap_count
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('local_settings.py')
 
-app.snap_percentage_manual = 98.7
+app.snap_percentage_manual = 98.9 
 
 app.creds = {'user': app.config['WENTZOMETER_ADMIN_USER'],
              'password':
